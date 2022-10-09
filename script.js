@@ -13,7 +13,7 @@ function computerPlay() {
 
 function playRound(playerSelection, computerSelection) {
     if (playerSelection === "rock" && computerSelection === "rock") {
-        return "It's a draw!";
+        return "It's a draw! You both chose Rock!";
     } else if (playerSelection === "rock" && computerSelection === "scissors") {
         playerScore++;
         return "You win! Rock beats scissors!";
@@ -21,7 +21,7 @@ function playRound(playerSelection, computerSelection) {
         computerScore++;
         return "You lose! Paper beats rock!";
     } else if (playerSelection === "paper" && computerSelection === "paper") {
-        return "It's a draw!";
+        return "It's a draw! You both chose Paper!";
     } else if (playerSelection === "paper" && computerSelection === "rock") {
         playerScore++;
         return "You win! paper beats rock!";
@@ -29,7 +29,7 @@ function playRound(playerSelection, computerSelection) {
         computerScore++;
         return "You lose! Scissors beats paper!";
     } else if (playerSelection === "scissors", computerSelection === "scissors") {
-        return "It's a draw!";
+        return "It's a draw! You both chose Scissors!";
     } else if (playerSelection === "scissors" && computerSelection === "paper") {
         playerScore++;
         return "You win! Scissors beats paper!";
@@ -48,21 +48,25 @@ function game() {
     for (let i = 1; i <= 5; i++) {
         let playerSelection = window.prompt("Please make a selection...");
         let computerSelection = computerPlay();
-
+        playRound(playerSelection, computerSelection);
+       
         console.log("Round #" + i);
         console.log(playerScore);
         console.log(computerScore);
-    if (i == 5) {
+    };
+
     if (playerScore > computerScore) {
         console.log("Congratulations! You win the game!");
     }
     else if (computerScore > playerScore) {
         console.log("You lose! The computer has won the game!");
-    } else {console.log("It's a tie! Nobody wins!")}
-    } else {
-        playRound(playerSelection, computerSelection);
+    } 
+    else if (computerScore == playerScore) {
+        console.log("It's a tie! Nobody wins!")
     }
-   }
-}
+    else {
+        playRound(playerSelection, computerSelection);
+    };
+};
 
 game();
